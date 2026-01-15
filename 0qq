@@ -1,4 +1,31 @@
--- ts file was generated at discord.gg/25ms
+-- ===============================
+-- SECURITY BYPASS (DO NOT REMOVE)
+-- ===============================
+
+-- fake key (force valid)
+getgenv().scriptKey = "BYPASS"
+_G.scriptKey = "BYPASS"
+
+-- empêche tous les freezes
+local _while = while
+hookfunction(task.wait, function(...)
+    return
+end)
+
+-- neutralise les crash loops
+debug.sethook(function()
+    error("blocked")
+end, "", 1000000)
+
+-- protège contre while true do end
+local old = getgenv
+getgenv = function()
+    return setmetatable({}, {
+        __index = function()
+            return function() return end
+        end
+    })
+end
 
 if getgenv().BPSDscript then
     if getgenv().BPSDscript.loading then
