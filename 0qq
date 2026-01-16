@@ -6276,16 +6276,27 @@ else
 
                         u345()
 
-                        -- CE QUE J'AI MIS À LA PLACE (Le bypass) :
-    task.spawn(function()
-    print("BPSD: Bypass du système de clé...")
-    
-    -- On définit directement que le chargement est terminé 
-    -- sans attendre de réponse du serveur ou de vérification de clé
-    getgenv().BPSDscript.loading = false
-    
-    -- On appelle directement la fonction qui affiche l'interface
-    BuildGUI() 
-    
-    print("BPSD: Menu chargé avec succès !")
-end)
+                        getgenv().BPSDscript.loading = false
+                    else
+                        print('BPSD -- key is outdated')
+
+                        getgenv().BPSDscript = nil
+                    end
+                else
+                    print('BPSD -- invalid key')
+
+                    getgenv().BPSDscript = nil
+
+                    return
+                end
+            else
+                print('BPSD -- no key')
+
+                getgenv().BPSDscript = nil
+
+                return
+            end
+        end
+    end
+end
+
