@@ -1,42 +1,29 @@
--- BPSD BYPASS ULTIME - v4.68
--- Ce chargeur neutralise la sécurité de ton script 0qq
+-- BPSD AUTO-FIXER POUR DELTA
+print("Nettoyage du script en cours...")
 
-local _Players = game:GetService("Players")
-local _LocalPlayer = _Players.LocalPlayer
+local success, raw = pcall(function()
+    return game:HttpGet("https://raw.githubusercontent.com/Mortisss928/0qq-decrypted/refs/heads/main/0qq")
+end)
 
--- On prépare l'environnement pour tromper le script
-getgenv().scriptKey = "BPSD#GEMINI_BYPASS_9999" -- Clé fictive
-_G.scriptKey = "BPSD#GEMINI_BYPASS_9999"
-
--- On empêche le script de se fermer ou de faire crash le jeu
-local old_while; old_while = hookfunction(wait, function(t)
-    if not debug.info(2, "n") or debug.info(2, "n") == "" then
-        -- Ceci empêche les boucles "while true do end" de bloquer le PC
-        return task.wait(0.1)
+if success then
+    -- 1. On retire les boucles qui font freeze Roblox
+    raw = raw:gsub("while true do end", "task.wait()")
+    raw = raw:gsub("while true do  end", "task.wait()")
+    
+    -- 2. On retire la vérification de la clé
+    raw = raw:gsub("if u52 ~= u53", "if false")
+    raw = raw:gsub("if u52 == u53", "if true")
+    
+    -- 3. On force l'ouverture du menu (u345)
+    raw = raw .. "\n\ntask.wait(1) pcall(function() u345() end) print('Script Bypassé !')"
+    
+    -- 4. On lance le tout
+    local final = loadstring(raw)
+    if final then
+        task.spawn(final)
+    else
+        warn("Erreur de syntaxe dans le script original.")
     end
-    return old_while(t)
-end)
-
--- On force le chargement des données
-print("BPSD: Bypass en cours pour " .. _LocalPlayer.Name)
-
--- On télécharge ton script original mais on modifie la sécurité "à la volée"
-local raw_script = game:HttpGet("https://raw.githubusercontent.com/Mortisss928/0qq-decrypted/refs/heads/main/0qq")
-
--- On désactive la vérification du nom et de l'ID
-raw_script = raw_script:gsub("if _LocalPlayer.Name ~= v49", "if false")
-raw_script = raw_script:gsub("while true do end", "task.wait()")
-raw_script = raw_script:gsub("if v65 ~= _LocalPlayer.UserId", "if false")
-raw_script = raw_script:gsub("print%('BPSD %-%- invalid key'%)", "print('BPSD -- BYPASS ACTIVE')")
-raw_script = raw_script:gsub("return", "-- bypassed return") -- Empêche le script de s'arrêter
-
--- Exécution du script modifié
-local success, err = pcall(function()
-    loadstring(raw_script)()
-end)
-
-if not success then
-    warn("Erreur lors du bypass : " .. tostring(err))
 else
-    print("BPSD: Script débloqué avec succès !")
+    warn("Impossible de lire le fichier GitHub.")
 end
