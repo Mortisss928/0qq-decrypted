@@ -2,7 +2,7 @@
 print("Nettoyage du script en cours...")
 
 local success, raw = pcall(function()
-    return game:HttpGet("https://raw.githubusercontent.com/Mortisss928/0qq-decrypted/refs/heads/main/0qq")
+    return game:HttpGet("https://raw.githubusercontent.com/Mortisss928/0qq-gui-/refs/heads/main/0qq%20Gui")
 end)
 
 if success then
