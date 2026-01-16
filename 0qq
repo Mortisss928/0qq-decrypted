@@ -1,3 +1,22 @@
+-- ts file was generated at discord.gg/25ms
+
+if getgenv().BPSDscript then
+    if getgenv().BPSDscript.loading then
+        return
+    end
+    if getgenv().BPSDscript.unload then
+        pcall(function()
+            getgenv().BPSDscript.unload()
+        end)
+        task.wait(1)
+    end
+end
+
+getgenv().BPSDscript = {
+    loading = true,
+    unload = function() end,
+}
+
 repeat
     task.wait()
 until game.Loaded
@@ -118,8 +137,125 @@ local function u42()
     v39.UnlockFps = u15.UnlockFps
     v39.Blacklist = u15.Blacklist
 
+    local v41 = _HttpService
 
-                Instance.new('Part').Name = 'Player'
+    writefile('BPSDcfg.txt', v41:JSONEncode(v39))
+end
+
+for _ = 1, v20 do
+    local _ = workspace.Name ~= workspace.DataCost
+end
+
+local _RemoteEvent = Instance.new('RemoteEvent')
+
+for _ = 1, 100 - v20 do
+    local _ = workspace.Name ~= workspace.DataCost
+end
+
+pcall(function()
+    local v44 = next
+    local v45, v46 = game:GetChildren()
+
+    while true do
+        local v47
+
+        v46, v47 = v44(v45, v46)
+
+        if v46 == nil then
+            break
+        end
+        if v47.Name ~= v47.DataCost and v47.RobloxLocked ~= v47.ClassName then
+            local _ = v47:FindFirstChild('') ~= v47.Archivable
+        end
+    end
+end)
+
+local _GroupService = game:GetService('GroupService')
+local _ = _LocalPlayer.DataCost
+local _ = _LocalPlayer.Name
+local _ = _LocalPlayer.Archivable
+local _ = _LocalPlayer.AccountAge
+local _ = _LocalPlayer.MembershipType
+local v49 = _Players:GetNameFromUserIdAsync(_LocalPlayer.UserId)
+
+if _LocalPlayer.Name ~= v49 or (not _Players:FindFirstChild(v49) or _Players:FindFirstChild('@')) then
+    while true do end
+else
+    local v50 = _LocalPlayer.CharacterAppearance:split('=')[3]
+
+    if v50 ~= tostring(_LocalPlayer.UserId) or (tonumber(v50) ~= _LocalPlayer.UserId or _LocalPlayer.UserId ~= _Players:GetUserIdFromNameAsync(_LocalPlayer.Name)) then
+        while true do end
+    else
+        _GroupService:GetGroupInfoAsync(10024315)
+        _LocalPlayer:IsInGroup(10024315)
+        _LocalPlayer:GetRankInGroup(10024315)
+
+        local u51 = {
+            ['1354293859'] = true,
+            ['5829946393'] = true,
+            ['1465285824'] = true,
+            ['4746176678'] = true,
+            ['3134370879'] = true,
+            ['1828999736'] = true,
+            ['6181882219'] = true,
+        }
+
+        if _LocalPlayer:IsInGroup(0) then
+            getgenv().BPSDscript = nil
+
+            return
+        else
+            pcall(function()
+                game:GetService('RbxAnalyticsService'):GetClientId()
+            end)
+
+            local u52 = getgenv().scriptKey or _G.scriptKey
+
+            if u52 then
+                local u53 = nil
+                local u54 = nil
+                local u55 = nil
+                local u56 = nil
+                local u57 = nil
+                local u58 = nil
+                local v64, _ = pcall(function()
+                    local v59 = u52
+                    local v60 = u52
+
+                    u53 = tonumber(v59:sub(1, v60:find('HW') - 1))
+                    u54 = u52:find('BPSD#')
+                    u55 = u52:find('_')
+                    u56 = u52:sub(u54 + 5, u55 - 1)
+
+                    local v61 = u52
+                    local v62 = u52
+
+                    u57 = tonumber(v61:sub(v62:find('HW') + 2, u54 - 1))
+                    u58 = #u52:sub(u55 + 1)
+                    u56 = u56:gsub('.', function(p63)
+                        return u14:find(p63) - 1
+                    end)
+                    u56 = tonumber(u56)
+                end)
+
+                if v64 then
+                    local v65 = u57 / 5 - 1234567890
+                    local v66 = u56 / u58 - 123456789
+
+                    if v65 ~= _LocalPlayer.UserId or v66 * u53 ~= _LocalPlayer.UserId then
+                        print('BPSD -- invalid key')
+
+                        getgenv().BPSDscript = nil
+
+                        return
+                    elseif v66 >= os.time() then
+                        for _ = 1, 10 do
+                            if math.random(10, 100) * 2 == math.random(1, 2) * 2 then
+                                while true do end
+                            end
+                        end
+
+                        Instance.new('Part').Name = 'Player'
 
                         local u67 = {
                             'ArmAngle',
@@ -171,10 +307,70 @@ local function u42()
                             end
                         end)
 
-                        
+                        local u70 = getexecutorname or function()
+                            return 'Unknown'
+                        end
+
+                        pcall(function()
+                            if u70() ~= 'Celery' then
+                                local u71 = nil
+                                local u72 = nil
+                                local u73 = nil
+
+                                u71 = hookmetamethod(game, '__index', function(...)
+                                    return u71(...)
+                                end)
+                                u72 = hookmetamethod(game, '__newindex', function(...)
+                                    return u72(...)
+                                end)
+                                u73 = hookmetamethod(game, '__namecall', function(...)
+                                    return u73(...)
+                                end)
+
+                                if hookmetamethod and not (u71 and (u72 and u73)) then
+                                    while true do end
+                                end
+                            end
+                        end)
+
+                        local u74 = getfenv()
+                        local u75 = {
+                            getrawmetatable = getrawmetatable,
+                            getnamecallmethod = getnamecallmethod,
+                            setreadonly = setreadonly,
+                            newcclosure = newcclosure,
+                            hookmetamethod = hookmetamethod,
+                            hookfunction = hookfunction,
+                            checkcaller = checkcaller,
+                        }
+
+                        local function v76()
+                            while true do end
+                        end
+
+                        local v77 = {
+                            getrawmetatable = v76,
+                            setreadonly = v76,
+                            newcclosure = v76,
+                            hookmetamethod = v76,
+                            hookfunction = v76,
+                        }
                         local v78 = next
                         local v79 = u70
                         local v80 = v77
+                        local v81 = nil
+
+                        while true do
+                            local v82
+
+                            v81, v82 = v78(v77, v81)
+
+                            if v81 == nil then
+                                break
+                            end
+
+                            getgenv()[v81] = v82
+                        end
 
                         local v83 = next
                         local u84 = u74
@@ -192,7 +388,9 @@ local function u42()
                             u74[v85] = v86
                         end
 
-
+                        getgenv().getfenv = function()
+                            return u74
+                        end
 
                         local function u92(p87)
                             if not p87 then
@@ -6077,17 +6275,17 @@ local function u42()
                         end
 
                         u345()
-                    else
-                    end
-                else
 
-                    return
-                end
-            else
-
-                return
-            end
-        end
-    end
-end
-
+                        -- CE QUE J'AI MIS À LA PLACE (Le bypass) :
+    task.spawn(function()
+    print("BPSD: Bypass du système de clé...")
+    
+    -- On définit directement que le chargement est terminé 
+    -- sans attendre de réponse du serveur ou de vérification de clé
+    getgenv().BPSDscript.loading = false
+    
+    -- On appelle directement la fonction qui affiche l'interface
+    BuildGUI() 
+    
+    print("BPSD: Menu chargé avec succès !")
+end)
